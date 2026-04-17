@@ -1,166 +1,145 @@
-# 🛒 Olist E-commerce Analysis — Customer Intelligence & Logistics
-
-<div align="center">
-
-![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat-square&logo=python&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-2.x-150458?style=flat-square&logo=pandas&logoColor=white)
-![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ML-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Portfolio%20Project-2ecc71?style=flat-square)
-
-**End-to-end data analysis on Brazil's largest e-commerce platform — from raw SQL to actionable customer intelligence.**
-
-</div>
-
----
+# 📊 Olist E-commerce Data Analysis
 
 ## 📌 Overview
 
-This project delivers a full analytical pipeline on the **Olist dataset** (100k+ orders, ~1.5M records), covering sales performance, logistics efficiency, customer segmentation, and NLP-based sentiment analysis.
+This project analyzes the **Olist Brazilian E-commerce dataset**, a real-world marketplace dataset, to uncover actionable insights into sales performance, customer behavior, and delivery operations.
 
-The goal: simulate a real **Data Analyst / Data Scientist workflow** — connecting to a relational database, engineering features, training unsupervised models, and extracting business-ready insights.
-
----
-
-## 🎯 Key Results
-
-| Area | Finding |
-|---|---|
-| **Logistics** | 85% of deliveries arrive before the estimated date |
-| **Revenue** | Clear seasonal peaks identified in the 2016–2018 trend |
-| **Segmentation** | 4 distinct customer clusters via RFM + K-Means |
-| **NLP** | Delivery timeliness is the #1 driver of 5-star reviews |
-| **Geo-analysis** | Northern states have 2× higher freight costs and delivery times |
+The analysis follows a complete data workflow, from data cleaning and preprocessing to exploratory analysis and visualization.
 
 ---
 
-## 🗂️ Project Structure
+## 🎯 Objectives
 
+* Analyze the full order lifecycle
+* Understand key drivers of sales and delivery performance
+* Identify patterns in customer behavior
+* Detect operational issues such as delays and cancellations
+
+---
+
+## 🗂️ Dataset
+
+* Source: Olist Brazilian E-commerce Dataset (Kaggle)
+* Type: Multi-table relational dataset
+* Main tables:
+
+  * Orders
+  * Customers
+  * Products
+  * Payments
+  * Deliveries
+  * Reviews
+
+---
+
+## 🛠️ Technologies Used
+
+* Python 🐍
+* Pandas
+* NumPy
+* Matplotlib / Seaborn
+* Plotly
+* Jupyter Notebook
+
+---
+
+## 🔍 Analysis Performed
+
+### 🧹 Data Cleaning & Preprocessing
+
+* Handling missing values
+* Date/time conversion
+* Merging multiple relational tables
+* Feature engineering (e.g., delivery time calculation)
+
+### 📊 Exploratory Data Analysis (EDA)
+
+* Order trends over time
+* Payment analysis (methods and installments)
+* Customer review distribution
+* Geographic analysis of sales
+
+### 🚚 Delivery & Logistics
+
+* Comparison between estimated and actual delivery dates
+* Identification of delayed shipments
+* Delivery performance analysis
+
+### 💳 Payments
+
+* Most used payment methods
+* Relationship between installments and order value
+
+### ⭐ Customer Experience
+
+* Review score distribution
+* Impact of delivery delays on customer satisfaction
+
+---
+
+## 📈 Key Insights
+
+* Delivery times show significant variability
+* Delays have a clear negative impact on customer reviews
+* A few payment methods dominate the platform
+* Sales exhibit clear temporal patterns (trends and seasonality)
+
+---
+
+## 📊 Visualizations
+
+The project includes multiple visualizations to support insights:
+
+* Time series of orders
+* Distributions and histograms
+* Correlation heatmaps
+* Interactive charts using Plotly
+
+---
+
+## ▶️ How to Run the Project
+
+1. Clone the repository:
+
+```bash id="qv9d8n"
+git clone https://github.com/your-username/olist-analysis.git
 ```
-olist-ecommerce-analysis/
-│
-├── Portfolio_Olist_Analysis.ipynb   # Main analysis notebook
-├── .env.example                     # DB credentials template
-├── requirements.txt                 # Python dependencies
+
+2. Navigate to the project folder:
+
+```bash id="1g2y0u"
+cd olist-analysis
+```
+
+3. Install dependencies:
+
+```bash id="nqv2fd"
+pip install -r requirements.txt
+```
+
+4. Launch the notebook:
+
+```bash id="s0u9n6"
+jupyter notebook
+```
+
+---
+
+## 📁 Project Structure
+
+```id="zq7z7g"
+├── data/              # dataset files
+├── notebooks/         # main analysis notebook
+├── images/            # exported visualizations
+├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## 🔍 Analysis Modules
+## 💡 Future Improvements
 
-### 1. Sales Performance
-Monthly revenue trend (2016–2018) with seasonality detection using time-series visualization.
-
-### 2. Logistics Efficiency
-Distribution of `delivery_delta` (real vs. estimated date). SQL query joins orders and calculates DATEDIFF at scale.
-
-### 3. RFM Customer Segmentation
-- **Recency, Frequency, Monetary** features extracted via SQL aggregations
-- `StandardScaler` normalization → `KMeans (k=4)` clustering
-- Scatter plot: Recency vs Monetary, colored by cluster
-
-### 4. NLP Sentiment Analysis
-- **TextBlob** polarity scoring on ~40k review texts (Portuguese)
-- **WordCloud** for 1-star and 5-star reviews separately
-- Boxplot: review score vs. NLP polarity correlation
-
-### 5. Geo-spatial Logistics
-Bar + line dual-axis chart: average delivery time and freight cost per Brazilian state (`customer_state`).
-
----
-
-## 🛠️ Tech Stack
-
-| Tool | Purpose |
-|---|---|
-| **MySQL + SQLAlchemy** | Relational DB queries, data extraction |
-| **Pandas / NumPy** | Data wrangling and feature engineering |
-| **Seaborn / Matplotlib** | Statistical and exploratory visualization |
-| **Scikit-learn** | StandardScaler, KMeans clustering |
-| **TextBlob** | Sentiment polarity scoring |
-| **WordCloud** | Keyword visualization from review text |
-
----
-
-## ⚙️ Setup & Run
-
-### 1. Clone the repo
-```bash
-git clone https://https://github.com/EricaZampella/portfolio_ecommerce/blob/main/Portfolio_Olist_Analysis.ipynb
-cd olist-ecommerce-analysis
-```
-
-### 2. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Configure database credentials
-```bash
-cp .env.example .env format:
-
-```
-DB_USER=
-DB_PASS=
-DB_HOST=
-```
-
-### 4. Load the dataset
-Download the [Olist dataset from Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) and import it into a MySQL database named `olist_ecommerce`.
-
-### 5. Run the notebook
-```bash
-jupyter notebook Portfolio_Olist_Analysis.ipynb
-```
-
----
-
-## 📦 Requirements
-
-```
-pandas
-numpy
-matplotlib
-seaborn
-sqlalchemy
-mysql-connector-python
-python-dotenv
-scikit-learn
-wordcloud
-textblob
-jupyter
-```
-
----
-
-## 💡 Business Insights
-
-- **Retention campaigns**: The RFM model identifies a "high-value but inactive" segment — ideal target for win-back offers.
-- **Regional logistics**: Freight cost optimization is critical for the North and Northeast states; regional fulfillment hubs could reduce delivery times significantly.
-- **Product strategy**: Sentiment analysis reveals that late deliveries, not product quality, drive negative reviews — logistics is the primary lever for CSAT improvement.
-
----
-
-## 🚀 Future Development
-
-- [ ] **Customer Churn Prediction** — supervised classification model (Logistic Regression / XGBoost)
-- [ ] **Market Basket Analysis** — association rules (Apriori) for cross-sell recommendations
-- [ ] **Interactive Dashboard** — Plotly Dash or Streamlit deployment
-- [ ] **Multilingual NLP** — swap TextBlob for a Portuguese-native model (e.g., BERTimbau)
-
----
-
-## 📄 Dataset
-
-**Brazilian E-Commerce Public Dataset by Olist**
-- Source: [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
-- License: CC BY-NC-SA 4.0
-- ~100,000 orders | 2016–2018 | 9 relational tables
-
----
-
-
-<div align="center">
-<sub>Built with Python, SQL, and a lot of Brazilian data ☕</sub>
-</div>
+* Build an interactive dashboard (Streamlit / Dash)
+* Develop predictive models (e.g., delivery delay prediction)
+* Customer segmentation (clustering)
+* Advanced retention and churn analysis
