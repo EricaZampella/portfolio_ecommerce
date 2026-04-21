@@ -12,9 +12,9 @@ mcp = FastMCP("Portfolio-MySQL-Server")
 # Configurazione database (usa l'utente mcp_user creato in precedenza)
 def get_db_connection():
     return mysql.connector.connect(
-        host=os.getenv("DB_HOST", "localhost"),
+        host=os.getenv("DB_HOST"),
         user=os.getenv("DB_USER_MCP", "mcp_user"),
-        password=os.getenv("DB_PASS_MCP", ""),
+        password=os.getenv("DB_PASS_MCP"),
         database=os.getenv("DB_NAME", "olist_ecommerce")
     )
 
